@@ -44,6 +44,37 @@ function secondXHTTP(getApi) {
             data = JSON.parse(data);
             console.log(data);
 
+            let kelvin = data.main.temp;
+            let city2 = data.name;
+            let forecastId = data.weather[0].id;
+            let icon = data.weather[0].icon;
+            let des = data.weather[0].description;
+            let cel = Math.floor(kelvin - 273);
+            let far = Math.floor(32 + ((9 / 5) * cel));
+
+            document.getElementById("city").innerHTML = city2;
+            document.getElementById("forecast").innerHTML = des;
+            document.getElementById("temp").innerHTML = cel + " C";
+
+
+            //change F to C on click
+            let tempswap = true;
+            document.getElementById("change").addEventListener("click", function () {
+
+                if (tempswap === false) {
+                    $("#temp").html(cel + " C");
+                    tempswap = true;
+                } else {
+                    $("#temp").html(far + " F");
+                    tempswap = false;
+                }
+
+
+            });
+
+
+
+
         } else {
             console.log("errrr");
         }
