@@ -71,6 +71,10 @@ function secondXHTTP(getApi) {
 
 
             });
+            //end click
+
+            //switch function
+            swi(data);
 
 
 
@@ -84,5 +88,37 @@ function secondXHTTP(getApi) {
     }
     xhttp2.open("GET", getApi, true);
     xhttp2.send();
+
+}
+// function with switch to sets current weather img
+function swi(someData) {
+
+    let forecastId = Math.floor(someData.weather[0].id / 100);
+
+
+    switch (forecastId) {
+        case 2:
+            document.getElementById("icon").src = "http://openweathermap.org/img/w/11d.png";
+            break;
+        case 3:
+            document.getElementById("icon").src = "http://openweathermap.org/img/w/09d.png";
+            break;
+        case 5:
+            document.getElementById("icon").src = "http://openweathermap.org/img/w/10d.png";
+            break;
+        case 6:
+            document.getElementById("icon").src = "http://openweathermap.org/img/w/13d.png";
+            break;
+        case 7:
+            document.getElementById("icon").src = "http://openweathermap.org/img/w/50d.png";
+            break;
+        case 8:
+            document.getElementById("icon").src = "http://openweathermap.org/img/w/01d.png";
+            break;
+
+        default:
+            document.getElementById("icon").src = "http://openweathermap.org/img/w/01n.png";
+            break;
+    }
 
 }
