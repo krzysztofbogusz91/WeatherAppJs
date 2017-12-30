@@ -17,6 +17,7 @@ function requestData() {
             lat = json.lat;
             long = json.lon;
             console.log(town + lat + long);
+            document.getElementById("city").innerHTML = town;
             //second xhttp request
             let api = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&APPID=34dc9025e629baa2dfdec264b2d3b55a';
             //pass corect api to second xhttp request
@@ -43,16 +44,14 @@ function secondXHTTP(getApi) {
             data = this.responseText;
             data = JSON.parse(data);
             console.log(data);
-
             let kelvin = data.main.temp;
-            let city2 = data.name;
             let forecastId = data.weather[0].id;
             let icon = data.weather[0].icon;
             let des = data.weather[0].description;
             let cel = Math.floor(kelvin - 273);
             let far = Math.floor(32 + ((9 / 5) * cel));
 
-            document.getElementById("city").innerHTML = city2;
+
             document.getElementById("forecast").innerHTML = des;
             document.getElementById("temp").innerHTML = cel + " C";
 
